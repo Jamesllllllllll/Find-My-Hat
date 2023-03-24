@@ -4,6 +4,7 @@ const hat = "^";
 const hole = "O";
 const fieldCharacter = "░";
 const pathCharacter = "*";
+const winGame = "✓";
 
 class Field {
   constructor(newField) {
@@ -70,73 +71,86 @@ let win = "false";
 while ((win = "false")) {
   let direction = prompt("Which direction? ");
   console.log("\n");
-  if (direction === "s") {
+  switch(direction) {
     
     // Move Down
+    case 's':
     myField.Y += 1;
     if (myField.Y > myField.field.length - 1) {
       console.log("You went outside the field!");
-      break;
+      return win;
     } else if (myField.field[myField.Y][myField.X] === hole) {
       console.log("You fell in a hole!");
-      break;
+      return win;
     } else if (myField.field[myField.Y][myField.X] === hat) {
+      myField.field[myField.Y][myField.X] = winGame;
+      myField.print();
       console.log("You win!");
-      break;
+      return win;
     } else {
       myField.field[myField.Y][myField.X] = pathCharacter;
     }
     myField.print();
-  } else if (direction === "w") {
+    break;
     
     // Move up
+    case 'w':
     myField.Y -= 1;
     if (myField.Y < 0) {
       console.log("You went outside the field!");
-      break;
+      return win;
     } else if (myField.field[myField.Y][myField.X] === hole) {
       console.log("You fell in a hole!");
-      break;
+      return win;
     } else if (myField.field[myField.Y][myField.X] === hat) {
+      myField.field[myField.Y][myField.X] = winGame;
+      myField.print();
       console.log("You win!");
-      break;
+      return win;
     } else {
       myField.field[myField.Y][myField.X] = pathCharacter;
     }
     myField.print();
-  } else if (direction === "d") {
-    
+    break;
+
     // Move Right
+    case 'd':
     myField.X += 1;
     if (myField.X > myField.field[myField.Y].length) {
       console.log("You went outside the field!");
-      break;
+      return win;
     } else if (myField.field[myField.Y][myField.X] === hole) {
       console.log("You fell in a hole!");
-      break;
+      return win;
     } else if (myField.field[myField.Y][myField.X] === hat) {
+      myField.field[myField.Y][myField.X] = winGame;
+      myField.print();
       console.log("You win!");
-      break;
+      return win;
     } else {
       myField.field[myField.Y][myField.X] = pathCharacter;
     }
     myField.print();
-  } else if (direction === "a") {
-    
-    // Move Left
+    break;
+
+    // Move left
+    case 'a':
     myField.X -= 1;
     if (myField.X < 0) {
       console.log("You went outside the field!");
-      break;
+      return win;
     } else if (myField.field[myField.Y][myField.X] === hole) {
       console.log("You fell in a hole!");
-      break;
+      return win;
     } else if (myField.field[myField.Y][myField.X] === hat) {
+      myField.field[myField.Y][myField.X] = winGame;
+      myField.print();
       console.log("You win!");
-      break;
+      return win;
     } else {
       myField.field[myField.Y][myField.X] = pathCharacter;
     }
     myField.print();
+    break;
   }
 }
