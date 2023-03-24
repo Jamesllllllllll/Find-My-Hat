@@ -31,7 +31,7 @@ class Field {
     // Add holes to field
     const fieldSize = length * height;
     let numOfHoles = 0;
-    while (numOfHoles < fieldSize * 0.2) {
+    while (numOfHoles < fieldSize * 0.25) {
       let holePosition = Math.floor(Math.random() * fieldSize);
       while (holePosition === 0) {
         holePosition = Math.floor(Math.random() * fieldSize);
@@ -62,7 +62,7 @@ class Field {
 let myField = new Field([]);
 
 // Declare field size
-myField.field = Field.generateField(10,5);
+myField.field = Field.generateField(15,10);
 
 myField.print();
 
